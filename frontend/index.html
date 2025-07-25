@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Parrillada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-4">
+    <h1 class="mb-4 text-danger">🍖 Calculadora de Parrillada</h1>
+
+    <div class="card p-3 mb-4">
+        <div class="row g-2">
+            <div class="col-md-4">
+                <label class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Tipo</label>
+                <select id="tipo" class="form-select">
+                     <option value="H">¿Cómo comes?</option>
+                    <option value="H">Hombre</option>
+                    <option value="M">Mujer</option>
+                    <option value="N">Niño/a</option>
+                </select>
+            </div>
+        </div>
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <h5 class="text-danger">Carnes</h5>
+            <div id="carnesContainer" class="mb-3"></div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="text-danger">Extras</h5>
+            <div id="extrasContainer" class="mb-3"></div>
+        </div>
+    </div>
+
+
+        <button class="btn btn-danger mt-3" id="btnComensal" onclick="agregarComensal()">Agregar Comensal</button>
+    </div>
+
+    <h2>🧑‍🤝‍🧑 Comensales</h2>
+    <table class="table table-striped" id="tabla-comensales">
+        <thead><tr><th>Nombre</th><th>Tipo</th><th>Ítems</th><th>Acción</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <button class="btn btn-danger mb-3" onclick="calcular()">Calcular Parrillada</button>
+
+    <div id="bloqueResultado" style="display:none">
+        <div id="resultado"></div>
+        <button id="descargarPDF" class="btn btn-success mt-3" style="display:none">
+            📄 Descargar lista en PDF
+        </button>
+    </div>
+
+
+   
+    
+    <!-- NUEVO -->
+
+    <!-- Debajo de la tabla de resultado -->
+    <div class="text-center">
+        <button id="descargarPDF" class="btn btn-outline-danger mt-3" style="display: none;"> 📄 Descargar lista en PDF </button> 
+        <!--  <button id="btnDescargarPDF" class="btn btn-danger mt-4"> 🗂 Descargar lista en PDF </button> -->
+    </div>
+
+    <!-- NUEVO -->
+
+    <script src="script.js"></script>
+</body>
+</html>
