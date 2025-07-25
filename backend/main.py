@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -10,12 +10,21 @@ import json
 import os
 from fastapi import Query
 
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
 
 app = FastAPI(
     title="Calculadora de Parrillada",
     description="API para estimar carnes y extras en base a comensales. Backend en FastAPI.",
     version="1.0.0"
 )
+
+# Servir archivos estáticos
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
 
 
 app.add_middleware(
@@ -47,6 +56,7 @@ class Comensal(BaseModel):
 class ComensalesWrapper(BaseModel):
     comensales: list[Comensal]
 
+
 def cargar_config():
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
@@ -60,6 +70,13 @@ def cargar_items():
 def obtener_items():
     return cargar_items()
 
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/admin", response_class=HTMLResponse)
+async def admin(request: Request):
+    return templates.TemplateResponse("admin.html", {"request": request})
 
 
 ## --- INICIO NUEVO FRAGMENTO --- #

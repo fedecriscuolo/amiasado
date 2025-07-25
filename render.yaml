@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: amiasado
+    env: docker
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    buildCommand: ""
+    startCommand: ""
+    autoDeploy: true
