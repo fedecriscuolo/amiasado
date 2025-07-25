@@ -179,15 +179,31 @@ function mostrarResultado(listaCompras) {
     const tbody = document.createElement("tbody");
 
     let index = 1;
-    for (const [item, cantidad] of Object.entries(listaCompras)) {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${index++}</td>
-            <td>${item}</td>
-            <td>${cantidad.toFixed(1)} g</td>
-        `;
-        tbody.appendChild(row);
-    }
+fetch(urlItems)
+  .then(res => res.json())
+  .then(data => {
+      const carnes = data.carnes || [];
+      const extras = data.extras || [];
+
+      for (const [item, cantidad] of Object.entries(listaCompras)) {
+          const row = document.createElement("tr");
+
+          // Determinar tipo
+          let tipo = '';
+          if (carnes.includes(item)) tipo = ' (Carne)';
+          else if (extras.includes(item)) tipo = ' (Extra)';
+
+          row.innerHTML = `
+              <td>${index++}</td>
+              <td>${tipo} ${item}</td>
+              <td>${cantidad.toFixed(1)} g</td>
+          `;
+          tbody.appendChild(row);
+      }
+
+      table.appendChild(tbody);
+      resultadoDiv.appendChild(table);
+  });
 
     table.appendChild(tbody);
     resultadoDiv.appendChild(table);
