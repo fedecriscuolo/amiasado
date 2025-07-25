@@ -80,6 +80,11 @@ Este proyecto está bajo la Licencia MIT.
 
 -----
 
-Creado por **Federico Criscuolo**.
+## 👨‍💻 Autor
 
-```
+Desarrollado por **Federico Martín Criscuolo**  
+LinkedIn: [https://www.linkedin.com/in/fedecriscuolo](https://www.linkedin.com/in/fedecriscuolo)
+
+-----
+
+
