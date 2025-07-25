@@ -36,8 +36,10 @@
         </div>
     </div>
 
-
-        <button class="btn btn-danger mt-3" id="btnComensal" onclick="agregarComensal()">Agregar Comensal</button>
+        <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-danger" id="btnComensal" onclick="agregarComensal()">Agregar Comensal</button>
+            <button class="btn btn-secondary" id="btnCancelarEdicion" onclick="cancelarEdicion()" style="display:none">Cancelar</button>
+        </div>
     </div>
 
     <h2>🧑‍🤝‍🧑 Comensales</h2>
@@ -55,20 +57,8 @@
         </button>
     </div>
 
-
-   
     
-    <!-- NUEVO -->
-
-    <!-- Debajo de la tabla de resultado -->
-    <div class="text-center">
-        <button id="descargarPDF" class="btn btn-outline-danger mt-3" style="display: none;"> 📄 Descargar lista en PDF </button> 
-        <!--  <button id="btnDescargarPDF" class="btn btn-danger mt-4"> 🗂 Descargar lista en PDF </button> -->
-    </div>
-
-    <!-- NUEVO -->
 
     <script src="/static/script.js"></script>
-
 </body>
 </html>
